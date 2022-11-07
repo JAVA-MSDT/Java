@@ -1,6 +1,32 @@
 # Compiled class file
 *.class
 
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+## Maven
+!.mvn/wrapper/maven-wrapper.jar
+/.mvn/
+.mvn
+.mvn/**
+/mvnw
+mvnw
+/mvnw.bat
+mvnw.cmd
+/log/
+*.log*
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.next
+release.properties
+
 # Log file
 *.log
 
