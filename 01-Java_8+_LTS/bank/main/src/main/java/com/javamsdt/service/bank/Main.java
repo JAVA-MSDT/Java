@@ -15,6 +15,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Predicate;
+import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
@@ -49,9 +50,7 @@ public class Main {
         // Get All users
         List<User> users = bankService.getAllUsers();
         users.forEach(System.out::println);
-
-//        Predicate<Subscription> creditSubscription = Objects::nonNull;
-//        List<Subscription> subscriptions = bankService.getAllSubscriptionsByCondition(creditSubscription.test(creditOptional));
+        
 
     }
 
