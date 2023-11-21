@@ -7,11 +7,14 @@ import com.javamsdt.bank.domain.bankcard.BankCard;
 import com.javamsdt.bank.domain.bankcard.BankCardType;
 import com.javamsdt.cloud.bank.BankCardGenerator;
 import com.javamsdt.cloud.service.BankServiceImpl;
+import com.javamsdt.cloud.service.SubscriptionException;
 import com.javamsdt.service.api.BankService;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.Optional;
+import java.util.List;
+import java.util.Objects;
+import java.util.function.Predicate;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
@@ -32,15 +35,23 @@ public class Main {
         bankService.subscribe(debit);
 
         //  Get Optional Subscription by card number.
-        Optional<Subscription> creditOptional = bankService.getSubscriptionByBankCardNumber(credit.getNumber());
-        Optional<Subscription> debitOptional = bankService.getSubscriptionByBankCardNumber(debit.getNumber());
+        Subscription creditOptional = bankService.getSubscriptionByBankCardNumber(credit.getNumber())
+                .orElseThrow(() -> new SubscriptionException("Subscription with the provided card number is not exist"));
+        Subscription debitOptional = bankService.getSubscriptionByBankCardNumber(debit.getNumber())
+                .orElseThrow(() -> new SubscriptionException("Subscription with the provided card number is not exist"));
 
-        creditOptional.ifPresent(System.out::println);
-        debitOptional.ifPresent(System.out::println);
+        System.out.println(creditOptional);
+        System.out.println(debitOptional);
+        System.out.println("getAverageUsersAge:: " + bankService.getAverageUsersAge());
+        System.out.println("isPayableUser Over 18 years:: " + BankService.isPayableUser(creditUser));
+        System.out.println("isPayableUser Over 18 years:: " + BankService.isPayableUser(debitUser));
 
         // Get All users
-        bankService.getAllUsers().forEach(System.out::println);
+        List<User> users = bankService.getAllUsers();
+        users.forEach(System.out::println);
 
+//        Predicate<Subscription> creditSubscription = Objects::nonNull;
+//        List<Subscription> subscriptions = bankService.getAllSubscriptionsByCondition(creditSubscription.test(creditOptional));
 
     }
 

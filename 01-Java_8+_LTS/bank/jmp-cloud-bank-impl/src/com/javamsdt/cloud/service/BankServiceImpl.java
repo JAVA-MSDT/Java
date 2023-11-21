@@ -9,6 +9,7 @@ import com.javamsdt.service.api.BankService;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
 
 public class BankServiceImpl implements BankService {
 
@@ -31,5 +32,10 @@ public class BankServiceImpl implements BankService {
     @Override
     public List<User> getAllUsers() {
         return dbInteraction.findAllUser();
+    }
+
+    @Override
+    public List<Subscription> getAllSubscriptionsByCondition(Predicate<Subscription> subscriptionPredicate) {
+        return dbInteraction.findAllSubscriptions();
     }
 }

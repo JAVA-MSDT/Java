@@ -5,108 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6bd5fe77-da95-4656-81a3-38605089a608" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Java 8 and 9, 10, 11+ Module Practical Task.docx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jmp-bank-api/jmp-bank-api.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jmp-bank-api/src/com/javamsdt/bank/api/Bank.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jmp-bank-api/src/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jmp-cloud-bank-impl/jmp-cloud-bank-impl.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jmp-cloud-bank-impl/src/com/javamsdt/cloud/service/BankServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jmp-cloud-bank-impl/src/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jmp-cloud-service-impl/jmp-cloud-service-impl.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jmp-cloud-service-impl/src/com/javamsdt/cloud/bank/BankCardGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jmp-cloud-service-impl/src/com/javamsdt/cloud/bank/DbInteraction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jmp-cloud-service-impl/src/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jmp-db/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jmp-db/src/main/java/com/javamsdt/bank/db/Db.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jmp-db/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jmp-dto/jmp-dto.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jmp-dto/src/com/javamsdt/bank/domain/Subscription.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jmp-dto/src/com/javamsdt/bank/domain/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jmp-dto/src/com/javamsdt/bank/domain/bankcard/BankCard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jmp-dto/src/com/javamsdt/bank/domain/bankcard/BankCardType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jmp-dto/src/com/javamsdt/bank/domain/bankcard/CreditBankCard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jmp-dto/src/com/javamsdt/bank/domain/bankcard/DebitBankCard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jmp-dto/src/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jmp-service-api/jmp-service-api.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jmp-service-api/src/com/javamsdt/service/api/BankService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jmp-service-api/src/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/main.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/src/com/javamsdt/service/bank/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/src/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../banksystem/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../banksystem/.idea/aws.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../banksystem/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../banksystem/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../banksystem/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../banksystem/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../banksystem/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../banksystem/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../banksystem/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../banksystem/jmp-bank-api/jmp-bank-api.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../banksystem/jmp-bank-api/src/main/java/com/javamsdt/bank/api/Bank.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../banksystem/jmp-bank-api/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../banksystem/jmp-bank-api/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../banksystem/jmp-bank-api/src/main/webapp/index.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../banksystem/jmp-cloud-bank-impl/jmp-cloud-bank-impl.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../banksystem/jmp-cloud-bank-impl/src/main/java/com/javamsdt/cloud/bank/BankCardGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../banksystem/jmp-cloud-bank-impl/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../banksystem/jmp-cloud-service-impl/jmp-cloud-service-impl.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../banksystem/jmp-cloud-service-impl/src/main/java/com/javamsdt/cloud/service/BankServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../banksystem/jmp-cloud-service-impl/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../banksystem/jmp-dto/jmp-dto.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../banksystem/jmp-dto/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../banksystem/jmp-dto/src/main/java/com/javamsdt/domain/Subscription.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../banksystem/jmp-dto/src/main/java/com/javamsdt/domain/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../banksystem/jmp-dto/src/main/java/com/javamsdt/domain/bankcard/BankCard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../banksystem/jmp-dto/src/main/java/com/javamsdt/domain/bankcard/BankCardType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../banksystem/jmp-dto/src/main/java/com/javamsdt/domain/bankcard/CreditBankCard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../banksystem/jmp-dto/src/main/java/com/javamsdt/domain/bankcard/DebitBankCard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../banksystem/jmp-dto/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../banksystem/jmp-service-api/jmp-service-api.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../banksystem/jmp-service-api/src/main/java/com/javamsdt/service/api/BankService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../banksystem/jmp-service-api/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../banksystem/main/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../banksystem/main/src/main/java/com/javamsdt/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../banksystem/main/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../bank/.idea/aws.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../bank/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../bank/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../bank/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../bank/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../bank/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../bank/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../bank/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../bank/jmp-bank-api/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../bank/jmp-bank-api/src/main/java/com/javamsdt/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../bank/jmp-bank-api/src/main/java/com/javamsdt/bank/api/Bank.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../bank/jmp-bank-api/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../bank/jmp-cloud-bank-impl/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../bank/jmp-cloud-bank-impl/src/main/java/com/javamsdt/bank/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../bank/jmp-cloud-service-impl/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../bank/jmp-cloud-service-impl/src/main/java/com/javamsdt/bank/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../bank/jmp-dto/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../bank/jmp-dto/src/main/java/com/javamsdt/bank/domain/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../bank/jmp-dto/src/main/java/com/javamsdt/bank/domain/Subscription.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../bank/jmp-dto/src/main/java/com/javamsdt/bank/domain/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../bank/jmp-dto/src/main/java/com/javamsdt/bank/domain/bankcard/BankCard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../bank/jmp-dto/src/main/java/com/javamsdt/bank/domain/bankcard/BankCardType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../bank/jmp-dto/src/main/java/com/javamsdt/bank/domain/bankcard/CreditBankCard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../bank/jmp-dto/src/main/java/com/javamsdt/bank/domain/bankcard/DebitBankCard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../bank/jmp-dto/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../bank/jmp-service-api/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../bank/jmp-service-api/src/main/java/com/javamsdt/bank/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../bank/jmp-service-api/src/main/java/com/javamsdt/bank/service/api/BankService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../bank/jmp-service-api/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../bank/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jmp-cloud-bank-impl/src/com/javamsdt/cloud/service/SubscriptionException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jmp-cloud-bank-impl/src/com/javamsdt/cloud/service/BankServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/jmp-cloud-bank-impl/src/com/javamsdt/cloud/service/BankServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jmp-service-api/src/com/javamsdt/service/api/BankService.java" beforeDir="false" afterPath="$PROJECT_DIR$/jmp-service-api/src/com/javamsdt/service/api/BankService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/com/javamsdt/service/bank/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/com/javamsdt/service/bank/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
