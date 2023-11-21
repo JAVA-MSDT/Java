@@ -1,4 +1,5 @@
 package com.javamsdt.bank.domain.bankcard;
+
 import com.javamsdt.bank.domain.User;
 
 import java.time.LocalDate;

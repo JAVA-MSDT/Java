@@ -100,78 +100,79 @@ public class DbInteraction {
         }
         return users;
     }
-        // ============ End of User Db Records ============ //
+    // ============ End of User Db Records ============ //
 
-        // ============ Start of Subscription Db Records ============ //
-        public void generateSubscriptionTableIfNotExists () {
-            String sql = "Create table IF NOT EXISTS subscription" +
-                    "(CARD_NUMBER varchar(50) primary key," +
-                    " bank_card varchar(50)," +
-                    " start_date varchar(50)" +
-                    ")";
-            db.generateTable(statement, sql);
-        }
-
-        public String insertSubscriptionQuery (BankCard bankCard){
-            return "Insert into subscription" +
-                    "(CARD_NUMBER, bank_card, start_date)" +
-                    " values " +
-                    "(" + "'" + bankCard.getNumber() + "'"
-                    + ", " + "'" + bankCard.getCardType() + "'"
-                    + ", " + "'" + bankCard.getStartDate().toString() + "'"
-                    + ")";
-        }
-
-        public List<Subscription> findAllSubscriptions() {
-        List<Subscription> subscriptions = new ArrayList<>();
-            var resultSet = selectQuery("subscription", "", "");
-            try (resultSet) {
-                while (resultSet.next()) {
-                    subscriptions.add(getSubscriptionFromResultSet(resultSet));
-                }
-            } catch (SQLException e) {
-                System.err.println("Error Getting List of Subscriptions from ResultSet");
-                throw new RuntimeException(e);
-            }
-        return subscriptions;
-        }
-
-        public Optional<Subscription> findSubscriptionByCardNumber(String cardNumber) {
-            Optional<Subscription> subscription = Optional.empty();
-            var resultSet = selectQuery("subscription", "CARD_NUMBER", cardNumber);
-            try (resultSet) {
-                while (resultSet.next()) {
-                    subscription = Optional.of(getSubscriptionFromResultSet(resultSet));
-                }
-            } catch (SQLException e) {
-                System.err.println("Error Getting Subscription Optional from ResultSet");
-                throw new RuntimeException(e);
-            }
-        return subscription;
-        }
-
-        private Subscription getSubscriptionFromResultSet(ResultSet resultSet) {
-            Subscription subscription = new Subscription();
-            try {
-                subscription.setCardNumber(resultSet.getString("CARD_NUMBER"));
-                subscription.setBankcard(resultSet.getString("bank_card"));
-                subscription.setStartDate(LocalDate.parse(resultSet.getString("start_date")));
-            } catch (SQLException e) {
-                System.err.println("Error Getting Subscription from ResultSet");
-                throw new RuntimeException(e);
-            }
-            return subscription;
-        }
-        // ============ End of Subscription Db Records ============ //
-        public Db getDb () {
-            return db;
-        }
-
-        public Connection getConnection () {
-            return connection;
-        }
-
-        public Statement getStatement () {
-            return statement;
-        }
+    // ============ Start of Subscription Db Records ============ //
+    public void generateSubscriptionTableIfNotExists() {
+        String sql = "Create table IF NOT EXISTS subscription" +
+                "(CARD_NUMBER varchar(50) primary key," +
+                " bank_card varchar(50)," +
+                " start_date varchar(50)" +
+                ")";
+        db.generateTable(statement, sql);
     }
+
+    public String insertSubscriptionQuery(BankCard bankCard) {
+        return "Insert into subscription" +
+                "(CARD_NUMBER, bank_card, start_date)" +
+                " values " +
+                "(" + "'" + bankCard.getNumber() + "'"
+                + ", " + "'" + bankCard.getCardType() + "'"
+                + ", " + "'" + bankCard.getStartDate().toString() + "'"
+                + ")";
+    }
+
+    public List<Subscription> findAllSubscriptions() {
+        List<Subscription> subscriptions = new ArrayList<>();
+        var resultSet = selectQuery("subscription", "", "");
+        try (resultSet) {
+            while (resultSet.next()) {
+                subscriptions.add(getSubscriptionFromResultSet(resultSet));
+            }
+        } catch (SQLException e) {
+            System.err.println("Error Getting List of Subscriptions from ResultSet");
+            throw new RuntimeException(e);
+        }
+        return subscriptions;
+    }
+
+    public Optional<Subscription> findSubscriptionByCardNumber(String cardNumber) {
+        Optional<Subscription> subscription = Optional.empty();
+        var resultSet = selectQuery("subscription", "CARD_NUMBER", cardNumber);
+        try (resultSet) {
+            while (resultSet.next()) {
+                subscription = Optional.of(getSubscriptionFromResultSet(resultSet));
+            }
+        } catch (SQLException e) {
+            System.err.println("Error Getting Subscription Optional from ResultSet");
+            throw new RuntimeException(e);
+        }
+        return subscription;
+    }
+
+    private Subscription getSubscriptionFromResultSet(ResultSet resultSet) {
+        Subscription subscription = new Subscription();
+        try {
+            subscription.setCardNumber(resultSet.getString("CARD_NUMBER"));
+            subscription.setBankcard(resultSet.getString("bank_card"));
+            subscription.setStartDate(LocalDate.parse(resultSet.getString("start_date")));
+        } catch (SQLException e) {
+            System.err.println("Error Getting Subscription from ResultSet");
+            throw new RuntimeException(e);
+        }
+        return subscription;
+    }
+
+    // ============ End of Subscription Db Records ============ //
+    public Db getDb() {
+        return db;
+    }
+
+    public Connection getConnection() {
+        return connection;
+    }
+
+    public Statement getStatement() {
+        return statement;
+    }
+}

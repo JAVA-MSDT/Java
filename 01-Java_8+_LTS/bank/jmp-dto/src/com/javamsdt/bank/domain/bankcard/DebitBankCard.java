@@ -5,7 +5,7 @@ import com.javamsdt.bank.domain.User;
 import java.time.LocalDate;
 
 
-public class DebitBankCard extends BankCard{
+public class DebitBankCard extends BankCard {
     private String number;
     private User user;
     private LocalDate startDate;

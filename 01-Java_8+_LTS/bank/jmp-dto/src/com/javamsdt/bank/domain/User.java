@@ -1,6 +1,7 @@
 package com.javamsdt.bank.domain;
 
 import java.time.LocalDate;
+
 public class User {
     private String name;
     private String surname;

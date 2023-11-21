@@ -17,6 +17,7 @@ public class BankCardGenerator implements Bank {
     static {
         dbInteraction.generateBankTableTableIfNotExists();
     }
+
     @Override
     public BankCard generateBankCard(User user, BankCardType bankCardType) {
         BankCard bankCard = null;

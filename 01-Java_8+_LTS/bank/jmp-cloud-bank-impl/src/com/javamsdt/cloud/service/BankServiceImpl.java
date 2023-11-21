@@ -17,6 +17,7 @@ public class BankServiceImpl implements BankService {
     static {
         dbInteraction.generateSubscriptionTableIfNotExists();
     }
+
     @Override
     public void subscribe(BankCard bankCard) {
         dbInteraction.getDb().executeUpdate(dbInteraction.getStatement(), dbInteraction.insertSubscriptionQuery(bankCard));
