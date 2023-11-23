@@ -12,6 +12,10 @@ import java.util.OptionalDouble;
 import java.util.function.Predicate;
 
 public interface BankService {
+    static boolean isPayableUser(User user) {
+        return ChronoUnit.YEARS.between(user.getBirthday(), LocalDate.now()) > 18;
+    }
+
     void subscribe(BankCard bankCard);
 
     Optional<Subscription> getSubscriptionByBankCardNumber(String cardNumber);
@@ -30,10 +34,6 @@ public interface BankService {
             return averageAge.getAsDouble();
         }
         return 0;
-    }
-
-    static boolean isPayableUser(User user) {
-        return ChronoUnit.YEARS.between(user.getBirthday(), LocalDate.now()) > 18;
     }
 
     List<Subscription> getAllSubscriptionsByCondition(Predicate<Subscription> subscriptionPredicate);
