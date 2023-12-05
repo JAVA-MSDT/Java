@@ -2,7 +2,7 @@ package com.javamsdt.maintask;
 
 import java.util.ConcurrentModificationException;
 import java.util.HashMap;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Map;
 
 /**
  *
@@ -12,9 +12,8 @@ public class HashMapIntegers {
     public static void main(String[] args) throws InterruptedException {
         long startTime = System.currentTimeMillis();
         HashMap<Integer, Integer> hashMap = new HashMap<>();
-        int[] values = { 10, 15, 40, 30, 5 };
-        Thread addThread = addHashMapIntegersThread(hashMap, values);
 
+        Thread addThread = addHashMapIntegersThread(hashMap);
         Thread sumThread = sumHashMapIntegersThread(hashMap);
 
         addThread.start();
@@ -27,11 +26,10 @@ public class HashMapIntegers {
         System.out.println("Elapsed time: " + (endTime - startTime) + " milliseconds");
     }
 
-    private static Thread addHashMapIntegersThread(HashMap<Integer, Integer> hashMap,
-            int[] values) {
+    private static Thread addHashMapIntegersThread(HashMap<Integer, Integer> hashMap) {
         return new Thread(() -> {
-            for (int i = 0; i < values.length; i++) {
-                hashMap.put(i, values[i]);
+            for (int i = 0; i < 1_000_000; i++) {
+                hashMap.put(i, i);
             }
         });
     }
@@ -41,15 +39,13 @@ public class HashMapIntegers {
         return new Thread(() -> {
             int sum = 0;
             try {
-                for (Integer value : hashMap.values()) {
-                    sum += value;
-                    Thread.sleep(1);
+                for (Map.Entry<Integer, Integer> entry : hashMap.entrySet()) {
+                    sum += entry.getValue();
                 }
             } catch (ConcurrentModificationException e) {
-                System.out.println("Caught ConcurrentModificationException");
-            } catch (InterruptedException e) {
-                System.out.println("Caught InterruptedException");
+                System.out.println("Caught ConcurrentModificationException during the Sum operation");
             }
+
             System.out.println("The Sum of the HashMap values is:" + sum);
         });
 

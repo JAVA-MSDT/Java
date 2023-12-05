@@ -5,7 +5,8 @@ import com.javamsdt.entity.Message;
 import java.util.Random;
 import java.util.concurrent.locks.Lock;
 
-public class Producer implements Runnable{
+public class Producer implements Runnable {
+    private static final int QUANTITY = 100;
     private final MessageBus messageBus;
     private final String[] topics;
 
@@ -17,9 +18,9 @@ public class Producer implements Runnable{
     @Override
     public void run() {
         Random random = new Random();
-        while (true) {
+        for (int i = 0; i < QUANTITY; i++) {
             String topic = topics[random.nextInt(topics.length)];
-            String payload = "Message " + random.nextInt(100);
+            String payload = "Message " + i;
             Message message = new Message(topic, payload);
 
             Lock lock = messageBus.getTopicLock(topic);
@@ -27,11 +28,12 @@ public class Producer implements Runnable{
             try {
                 messageBus.postMessage(message);
             } finally {
+                System.out.println("Producing a message:: " + message.payload() + ", to topic:: " + topic);
                 lock.unlock();
             }
 
             try {
-                Thread.sleep(1000);
+                Thread.sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

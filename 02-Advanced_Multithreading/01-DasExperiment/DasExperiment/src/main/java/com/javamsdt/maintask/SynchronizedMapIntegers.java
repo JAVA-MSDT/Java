@@ -13,14 +13,19 @@ public class SynchronizedMapIntegers {
     public static void main(String[] args) throws InterruptedException {
         long startTime = System.currentTimeMillis();
         Map<Integer, Integer> hashMap = Collections.synchronizedMap(new HashMap<>());
-        int[] values = { 10, 15, 40, 30, 5 };
-        Thread addThread = addHashMapIntegersThread(hashMap, values);
 
+        Thread addThread = addHashMapIntegersThread(hashMap);
         Thread sumThread = sumHashMapIntegersThread(hashMap);
 
         addThread.start();
-        sumThread.start();
 
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        sumThread.start();
         addThread.join();
         sumThread.join();
 
@@ -28,28 +33,23 @@ public class SynchronizedMapIntegers {
         System.out.println("Elapsed time: " + (endTime - startTime) + " milliseconds");
     }
 
-    private static Thread addHashMapIntegersThread(Map<Integer, Integer> hashMap,
-            int[] values) {
+    private static Thread addHashMapIntegersThread(Map<Integer, Integer> hashMap) {
         return new Thread(() -> {
-            for (int i = 0; i < values.length; i++) {
-                hashMap.put(i, values[i]);
+            for (int i = 0; i < 1_000_000; i++) {
+                hashMap.put(i, i);
             }
         });
     }
 
     private static Thread sumHashMapIntegersThread(Map<Integer, Integer> hashMap) {
-
         return new Thread(() -> {
             int sum = 0;
             try {
-                for (Integer value : hashMap.values()) {
-                    sum += value;
-                    Thread.sleep(1);
+                for (Map.Entry<Integer, Integer> entry : hashMap.entrySet()) {
+                    sum += entry.getValue();
                 }
             } catch (ConcurrentModificationException e) {
-                System.out.println("Caught ConcurrentModificationException");
-            } catch (InterruptedException e) {
-                System.out.println("Caught InterruptedException");
+                System.out.println("Caught ConcurrentModificationException during the Sum operation");
             }
             System.out.println("The Sum of the HashMap values is:" + sum);
         });

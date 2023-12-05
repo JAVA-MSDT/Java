@@ -14,29 +14,35 @@ public class Main {
 
         Map<Currency, BigDecimal> user1bBalances = new HashMap<>();
         user1bBalances.put(new Currency("USD"), BigDecimal.valueOf(1000));
-        user1bBalances.put(new Currency("EUR"), BigDecimal.valueOf(500));
+        user1bBalances.put(new Currency("EUR"), BigDecimal.valueOf(1500));
         UserAccount user1 = new UserAccount("user1", user1bBalances);
 
         Map<Currency, BigDecimal> user2bBalances = new HashMap<>();
-        user2bBalances.put(new Currency("USD"), BigDecimal.valueOf(500));
+        user2bBalances.put(new Currency("USD"), BigDecimal.valueOf(1500));
         user2bBalances.put(new Currency("EUR"), BigDecimal.valueOf(1000));
         UserAccount user2 = new UserAccount("user2", user2bBalances);
 
-        // Create sample accounts
-        exchangeService.createAccount(user1);
-        exchangeService.createAccount(user2);
+        // generate accounts
+        exchangeService.generateAccount(user1);
+        exchangeService.generateAccount(user2);
 
-        // Create sample currencies
-        exchangeService.createCurrency("USD");
-        exchangeService.createCurrency("EUR");
+        // generate currencies
+        exchangeService.generateCurrency("USD");
+        exchangeService.generateCurrency("EUR");
 
-        // Set sample exchange rates
+        // Set exchange rates
         exchangeService.setExchangeRate("USD", "EUR", new BigDecimal("0.85"));
         exchangeService.setExchangeRate("EUR", "USD", new BigDecimal("0.50"));
 
-        // Perform sample exchange operations
+        // Perform exchange operations
         exchangeService.performExchange("user1", "USD", "EUR", new BigDecimal("100"));
         exchangeService.performExchange("user2", "EUR", "USD", new BigDecimal("100"));
+        exchangeService.performExchange("user1", "USD", "EUR", new BigDecimal("80"));
+        exchangeService.performExchange("user2", "EUR", "USD", new BigDecimal("80"));
+        exchangeService.performExchange("user1", "USD", "EUR", new BigDecimal("150"));
+        exchangeService.performExchange("user2", "EUR", "USD", new BigDecimal("150"));
+        exchangeService.performExchange("user1", "USD", "EUR", new BigDecimal("50"));
+        exchangeService.performExchange("user2", "EUR", "USD", new BigDecimal("50"));
 
         exchangeService.shutdown();
     }

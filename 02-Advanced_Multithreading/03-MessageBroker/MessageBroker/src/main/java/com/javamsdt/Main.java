@@ -13,12 +13,12 @@ public class Main {
         MessageBus messageBus = new MessageBus(topics);
         ExecutorService executor = Executors.newFixedThreadPool(5);
 
+        executor.submit(new Producer(messageBus, topics));
+
         for (String topic : topics) {
             executor.submit(new Consumer(messageBus, topic));
         }
 
-        for (int i = 0; i < 2; i++) {
-            executor.submit(new Producer(messageBus, topics));
-        }
+        executor.shutdown();
     }
 }

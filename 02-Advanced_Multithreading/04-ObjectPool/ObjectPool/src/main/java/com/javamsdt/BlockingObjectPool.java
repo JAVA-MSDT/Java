@@ -1,13 +1,11 @@
-package com.javamsdt.configuration;
+package com.javamsdt;
 
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class BlockingObjectPool {
     private final Queue<Object> pool;
     private final int size;
-    private final ReentrantReadWriteLock readWriteLock = new ReentrantReadWriteLock();
 
     public BlockingObjectPool(int size) {
         this.size = size;
@@ -23,7 +21,6 @@ public class BlockingObjectPool {
 
     public synchronized Object get() {
         if (pool.isEmpty()) {
-            System.err.println("Error in Thread# " + Thread.currentThread().getId() + ", the pool is empty");
             try {
                 System.err.println("Error in Thread# " + Thread.currentThread().getId() + ", the pool is empty");
                 wait();
@@ -37,7 +34,6 @@ public class BlockingObjectPool {
     public synchronized void take(Object object) {
 
         if (pool.size() >= size) {
-            System.err.println("Error in Thread# " + Thread.currentThread().getId() + ", the pool is already full of Objects");
             try {
                 System.err.println("Error in Thread# " + Thread.currentThread().getId() + ", the pool is already full of Objects");
                 wait();

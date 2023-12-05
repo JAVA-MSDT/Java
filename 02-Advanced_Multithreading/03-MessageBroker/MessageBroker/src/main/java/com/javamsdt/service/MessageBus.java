@@ -4,14 +4,13 @@ import com.javamsdt.entity.Message;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.BlockingQueue;
+import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class MessageBus {
-    private final Map<String, BlockingQueue<Message>> messageQueueMap = new HashMap<>();
+    private final Map<String, Queue<Message>> messageQueueMap = new HashMap<>();
     private final Map<String, Lock> topicLocks = new HashMap<>();
 
     public MessageBus(String[] topics) {
@@ -27,7 +26,7 @@ public class MessageBus {
     }
 
     public Message consumeMessage(String topic) throws InterruptedException {
-        return messageQueueMap.get(topic).poll(1, TimeUnit.SECONDS);
+        return messageQueueMap.get(topic).poll();
     }
 
     public Lock getTopicLock(String topic) {

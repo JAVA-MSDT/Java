@@ -6,31 +6,31 @@ import com.javamsdt.entity.ExchangeRate;
 import com.javamsdt.entity.UserAccount;
 
 import java.math.BigDecimal;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class ExchangeService {
-    private Map<String, UserAccount> accounts;
-    private Map<String, Currency> currencies;
-    private Map<String, ExchangeRate> exchangeRates;
-    private ExecutorService executorService;
+    private final Map<String, Currency> currencies;
+    private final Map<String, ExchangeRate> exchangeRates;
+    private final ExecutorService executorService;
+    private final AccountDAO accountDAO = new AccountDAO();
+    private final Lock lock = new ReentrantLock();
 
     public ExchangeService() {
-        this.accounts = new ConcurrentHashMap<>();
         this.currencies = new ConcurrentHashMap<>();
         this.exchangeRates = new ConcurrentHashMap<>();
         this.executorService = Executors.newFixedThreadPool(10);
     }
 
-    public void createAccount(UserAccount userAccount) {
-        accounts.put(userAccount.getUsername(), userAccount);
-        new AccountDAO().saveAccount(userAccount);
+    public void generateAccount(UserAccount userAccount) {
+        accountDAO.saveAccount(userAccount);
     }
 
-    public void createCurrency(String code) {
+    public void generateCurrency(String code) {
         currencies.putIfAbsent(code, new Currency(code));
     }
 
@@ -40,32 +40,31 @@ public class ExchangeService {
         exchangeRates.put(fromCurrencyCode + "_" + toCurrencyCode, new ExchangeRate(fromCurrency, toCurrency, rate));
     }
 
-        public void performExchange(String username, String fromCurrencyCode, String toCurrencyCode, BigDecimal amount) {
-        UserAccount account = accounts.get(username);
-            if (account != null) {
-            executorService.submit(() -> {
-                synchronized (account) {
-                    System.out.printf("account before currency exchange operation %s, Done by thread %s %n", account, Thread.currentThread().getName());
-                    Currency fromCurrency = currencies.get(fromCurrencyCode);
-                    Currency toCurrency = currencies.get(toCurrencyCode);
-                    ExchangeRate exchangeRate = exchangeRates.get(fromCurrencyCode + "_" + toCurrencyCode);
+    public synchronized void performExchange(String username, String fromCurrencyCode, String toCurrencyCode, BigDecimal amount) {
 
-                    if (fromCurrency != null && toCurrency != null && exchangeRate != null) {
-                        BigDecimal fromBalance = account.getBalances().getOrDefault(fromCurrency, BigDecimal.ZERO);
+        executorService.submit(() -> {
+            lock.lock();
+            UserAccount account = accountDAO.loadAccount(username);
+            System.out.printf("account before currency exchange operation %s, Done by thread %s %n", account, Thread.currentThread().getName());
+            Currency fromCurrency = currencies.get(fromCurrencyCode);
+            Currency toCurrency = currencies.get(toCurrencyCode);
+            ExchangeRate exchangeRate = exchangeRates.get(fromCurrencyCode + "_" + toCurrencyCode);
 
-                        BigDecimal exchangedAmount = amount.multiply(exchangeRate.getRate());
-                        if (fromBalance.compareTo(amount) >= 0) {
-                            account.getBalances().merge(fromCurrency, amount, BigDecimal::subtract);
-                            account.getBalances().merge(toCurrency, exchangedAmount, BigDecimal::add);
+            if (fromCurrency != null && toCurrency != null && exchangeRate != null) {
+                BigDecimal fromBalance = account.getBalances().getOrDefault(fromCurrency, BigDecimal.ZERO);
 
-                            System.out.printf("account after currency exchange operation %s, Done by thread %s %n", account, Thread.currentThread().getName());
-                            // Save the updated account
-                            new AccountDAO().saveAccount(account);
-                        }
-                    }
+                BigDecimal exchangedAmount = amount.multiply(exchangeRate.getRate());
+                if (fromBalance.compareTo(amount) >= 0) {
+                    account.getBalances().merge(fromCurrency, amount, BigDecimal::subtract);
+                    account.getBalances().merge(toCurrency, exchangedAmount, BigDecimal::add);
+
+                    System.out.printf("account after currency exchange operation %s, Done by thread %s %n", account, Thread.currentThread().getName());
+                    // Save the updated account
+                    accountDAO.saveAccount(account);
                 }
-            });
-        }
+            }
+            lock.unlock();
+        });
     }
 
     public void shutdown() {
