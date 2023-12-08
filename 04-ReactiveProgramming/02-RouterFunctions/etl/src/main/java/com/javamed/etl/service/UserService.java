@@ -34,7 +34,7 @@ public class UserService {
 
     public Mono<ServerResponse> searchUsers(ServerRequest request) {
         String query = request.queryParam("q").orElse("");
-        return userRepository.findByLoginContaining(query)
+        return userRepository.findByLoginContainingIgnoreCase(query)
                 .collectList()
                 .flatMap(users -> ServerResponse.ok().body(BodyInserters.fromValue(users)));
     }

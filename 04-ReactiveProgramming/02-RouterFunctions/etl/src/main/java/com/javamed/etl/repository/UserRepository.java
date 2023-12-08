@@ -10,6 +10,6 @@ import reactor.core.publisher.Mono;
 public interface UserRepository extends ReactiveCrudRepository<User, Long> {
 
     Mono<Boolean> existsByLogin(String username);
-    Flux<User> findByLoginContaining(String query);
+    Flux<User> findByLoginContainingIgnoreCase(String query);
 
 }
