@@ -1,5 +1,7 @@
-package com.javamed.etl;
+package com.javamed.etl.service;
 
+import com.javamed.etl.modal.User;
+import com.javamed.etl.repository.UserRepository;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,13 +15,11 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class UserWebClientService {
 
+    private final UserRepository userRepository;
     @Value("${base.api.url}")
     private String baseUrl;
-
     @Value("${users.resource}")
     private String users;
-
-    private final UserRepository userRepository;
 
     public Flux<User> getUsers() {
         return userRepository.findAll();

@@ -1,5 +1,6 @@
 package com.javamed.etl;
 
+import com.javamed.etl.service.UserWebClientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -10,7 +11,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @RequiredArgsConstructor
 public class EtlApplication implements ApplicationRunner {
     private final UserWebClientService userWebClientService;
-    private final UserRepository userRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(EtlApplication.class, args);
@@ -20,9 +20,9 @@ public class EtlApplication implements ApplicationRunner {
     public void run(ApplicationArguments args) {
 
         userWebClientService.saveUsers();
-        User user = userRepository.findByLogin("nitay").block();
-        System.out.println("User:: " + user);
+        System.out.println("================ Start of Returning users from DB ================");
         userWebClientService.getUsers().toIterable().forEach(System.out::println);
+        System.out.println("================ End of Returning users from DB ================");
 
     }
 }

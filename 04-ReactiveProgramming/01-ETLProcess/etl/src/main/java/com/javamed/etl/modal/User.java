@@ -1,4 +1,4 @@
-package com.javamed.etl;
+package com.javamed.etl.modal;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
