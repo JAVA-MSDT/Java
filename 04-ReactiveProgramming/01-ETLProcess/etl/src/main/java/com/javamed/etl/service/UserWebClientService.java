@@ -2,17 +2,13 @@ package com.javamed.etl.service;
 
 import com.javamed.etl.modal.User;
 import com.javamed.etl.repository.UserRepository;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-@Data
 @Service
-@RequiredArgsConstructor
 public class UserWebClientService {
 
     private final UserRepository userRepository;
@@ -20,6 +16,10 @@ public class UserWebClientService {
     private String baseUrl;
     @Value("${users.resource}")
     private String users;
+
+    public UserWebClientService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     public Flux<User> getUsers() {
         return userRepository.findAll();
@@ -34,10 +34,10 @@ public class UserWebClientService {
                         , clientResponse -> Mono.error(new RuntimeException("Failed to fetch users. Status: " + clientResponse.statusCode())))
                 .bodyToFlux(User.class)
                 .flatMap(user -> {
-                    User user1 = new User();
-                    user1.setLogin(user.getLogin());
+                    User user1 = new User(user.login());
                     return userRepository.save(user1);
                 })
+                .log()
                 .subscribe();
 
         // Sleeping to give time for the save operation, so we can read the object in the Main class.

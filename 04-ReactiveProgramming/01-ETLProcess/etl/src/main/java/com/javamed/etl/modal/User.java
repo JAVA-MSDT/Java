@@ -1,13 +1,11 @@
 package com.javamed.etl.modal;
 
-import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
-@Data
 @Table("USERS")
-public class User {
-    @Id
-    private Long id;
-    private String login;
+public record User(@Id Long id, String login) {
+    public User(String login) {
+        this(null, login);
+    }
 }
