@@ -2,7 +2,6 @@ package com.javamed.etl.service;
 
 import com.javamed.etl.modal.User;
 import com.javamed.etl.repository.UserRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.BodyInserters;
@@ -11,10 +10,13 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
 @Service
-@RequiredArgsConstructor
 public class UserService {
 
     private final UserRepository userRepository;
+
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     public Mono<ServerResponse> insertUser(ServerRequest request) {
         String login = request.pathVariable("login");
