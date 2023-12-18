@@ -13,9 +13,6 @@ public class RouterConfiguration {
 
     @Value("${users.all}")
     private String findAllUsers;
-
-    @Value("${users.backpressure}")
-    private String findAllUsersByBackpressure;
     @Value("${users.save.by.login}")
     private String saveUserByLogin;
     @Value("${users.query.by.query.param}")
@@ -25,7 +22,6 @@ public class RouterConfiguration {
     public RouterFunction<ServerResponse> userRoutes(UserService userService) {
         return RouterFunctions.route()
                 .GET(findAllUsers, userService::findAllUsers)
-                .GET(findAllUsersByBackpressure, userService::findAllUsersByBackpressure)
                 .POST(saveUserByLogin, userService::insertUser)
                 .GET(queryUserByQueryParam, userService::searchUsers)
                 .build();
