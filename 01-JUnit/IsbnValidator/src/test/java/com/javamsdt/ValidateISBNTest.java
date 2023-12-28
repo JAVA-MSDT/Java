@@ -22,16 +22,16 @@ class ValidateISBNTest {
 
     @Test
      void checkValidISBN() {
-        boolean isValidISBN =  validateISBN.checkISBN(140449116);
+        boolean isValidISBN =  validateISBN.checkISBN("0140449116");
         assertTrue(isValidISBN);
 
-         isValidISBN =  validateISBN.checkISBN(140177369);
+         isValidISBN =  validateISBN.checkISBN("0140177396");
         assertTrue(isValidISBN);
     }
 
     @Test
      void checkInValidISBN() {
-        boolean isValidISBN =  validateISBN.checkISBN(140449117);
+        boolean isValidISBN =  validateISBN.checkISBN("0140449117");
         assertFalse(isValidISBN);
     }
 }

@@ -2,7 +2,11 @@ package com.javamsdt;
 
 public class ValidateISBN {
 
-    public boolean checkISBN(int isbn) {
-       return (isbn == 140449116 || isbn == 140177369);
+    public boolean checkISBN(String isbn) {
+        int total = 0;
+        for (int i = 0; i < 10; i++) {
+            total += isbn.charAt(i) * (10 - i);
+        }
+        return total % 11 == 0;
     }
 }
