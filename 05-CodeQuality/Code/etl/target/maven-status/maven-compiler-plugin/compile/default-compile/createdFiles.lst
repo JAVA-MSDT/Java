@@ -1,0 +1,6 @@
+com\javamed\etl\modal\User.class
+com\javamed\etl\routercontroller\RouterConfiguration.class
+com\javamed\etl\service\UserWebClientService.class
+com\javamed\etl\EtlApplication.class
+com\javamed\etl\service\UserService.class
+com\javamed\etl\repository\UserRepository.class

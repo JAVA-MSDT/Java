@@ -1,4 +1,4 @@
-package com.javamsdt;
+package com.javamsdt.service;
 
 import java.util.Map;
 
