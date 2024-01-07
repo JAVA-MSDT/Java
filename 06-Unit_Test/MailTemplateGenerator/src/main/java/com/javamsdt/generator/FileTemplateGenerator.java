@@ -25,7 +25,8 @@ public class FileTemplateGenerator implements TemplateGenerator{
             Path inputPath = Paths.get("src/main/resources",inputFile);
             Path outputPath = Paths.get("src/main/resources",outputFile);
             String template = Files.readString(inputPath);
-            MailTemplateGenerator generator = new MailTemplateGenerator(template);
+            MailTemplateGenerator generator = new MailTemplateGenerator();
+            generator.setTemplate(template);
             Map<String, String> runtimeValues = getRuntimeValues();
             result = generator.generateTemplate(runtimeValues);
             Files.writeString(outputPath, result);

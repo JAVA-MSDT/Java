@@ -10,31 +10,35 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class MailTemplateGeneratorTest {
-
+    MailTemplateGenerator generator;
     @BeforeEach
     void setUp() {
+        generator = new MailTemplateGenerator();
     }
 
     @AfterEach
     void tearDown() {
+
     }
 
     @Test
     void testReplaceVariablePlaceholders() {
-        MailTemplateGenerator generator = new MailTemplateGenerator("Hello, #{name}!");
+        generator.setTemplate("Hello, #{name}!");
         String result = generator.generateTemplate(Map.of("name", "John"));
         assertEquals("Hello, John!", result);
     }
 
     @Test
     void testExceptionIfPlaceholderValueNotProvided() {
-        MailTemplateGenerator generator = new MailTemplateGenerator("Hello, #{name}!");
+        MailTemplateGenerator generator = new MailTemplateGenerator();
+        generator.setTemplate("Hello, #{name}!");
         assertThrows(RuntimeException.class, () -> generator.generateTemplate(Map.of()));
     }
 
     @Test
     void testIgnoreValuesNotInTemplate() {
-        MailTemplateGenerator generator = new MailTemplateGenerator("Hello, #{name}!");
+        MailTemplateGenerator generator = new MailTemplateGenerator();
+        generator.setTemplate("Hello, #{name}!");
         String result = generator.generateTemplate(Map.of("age", "25"));
         assertEquals("Hello, #{name}!", result);
     }
@@ -48,7 +52,8 @@ class MailTemplateGeneratorTest {
 
     @Test
     void testSupportLatin1CharacterSet() {
-        MailTemplateGenerator generator = new MailTemplateGenerator("Special characters: #{special}");
+        MailTemplateGenerator generator = new MailTemplateGenerator();
+        generator.setTemplate("Special characters: #{special}");
         String result = generator.generateTemplate(Map.of("special", "üöä"));
         assertEquals("Special characters: üöä", result);
     }

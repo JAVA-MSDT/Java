@@ -4,25 +4,29 @@ import java.util.Map;
 
 public class MailTemplateGenerator {
 
-    private final String template;
-
-    public MailTemplateGenerator(String template) {
-        this.template = template;
-    }
+    private String template;
 
     public String generateTemplate(Map<String, String> values) {
-        String result = template;
+        String result = getTemplate();
         for (Map.Entry<String, String> entry : values.entrySet()) {
             String placeholder = "#{" + entry.getKey() + "}";
-            if(template.contains(placeholder)) {
+            if(result.contains(placeholder)) {
                 result = result.replace(placeholder, entry.getValue());
             } else {
-                return template;
+                return result;
             }
         }
         if (result.contains("#{")) {
             throw new RuntimeException("Not all placeholder values provided");
         }
         return result;
+    }
+
+    public void setTemplate(String template) {
+        this.template = template;
+    }
+
+    public String getTemplate() {
+        return template;
     }
 }
