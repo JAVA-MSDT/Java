@@ -15,8 +15,6 @@ public class ConsoleTemplateGenerator implements TemplateGenerator {
     @Override
     public String generateTemplate() {
         Map<String, String> runtimeValues = getRuntimeValues();
-        String result = generator.generateTemplate(runtimeValues);
-        System.out.println("Generated Message: " + result);
-        return result;
+        return generator.generateTemplate(runtimeValues);
     }
 }
