@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ValidateISBNTest {
@@ -33,5 +34,10 @@ class ValidateISBNTest {
      void checkInValidISBN() {
         boolean isValidISBN =  validateISBN.checkISBN("0140449117");
         assertFalse(isValidISBN);
+    }
+
+    @Test()
+    void testInvalidISBNLength() {
+        assertThrows(NumberFormatException.class, () -> validateISBN.checkISBN("140449117"));
     }
 }
