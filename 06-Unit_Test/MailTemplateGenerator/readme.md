@@ -1,4 +1,6 @@
 # Template Generator
+
+-
 ## Description
 - A messenger that ill pretend to send emails using custom template generator.
 ## Requirements
@@ -39,6 +41,43 @@
     - Method should replace the name in template with the name
       from the runtime value.
     - you can use any key value, name here is just example.
+## Functional Requirements
+- Using TDD approach.
+- Use @Parametrized test.
+- Implement meta annotations and filtering.
+- Temporary Folder rule.
+- Mock reading from File & Console.
+- Use partial mock.
+- Use spy.
+- Create custom extension (JUnit5) to output test execution information to a file.
+- Using ExpectedException rule to check exceptions & Assertion mechanism.
+- Implement Disabling test on condition.
+- Test quality & adequate coverage will be assessed.
+- Write BDD tests. use any framework(Spock, JBehave. Cucumber, etc).
+## Development advices
+- You can have 2 separate runners, one for console another for file as follows;
+- ![Console Runner](readmme-assets/01-ConsoleRunner.png)
+
+- ![File Runner](readmme-assets/02-FileRunner.png)
+- For more check the main class and the test classes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
