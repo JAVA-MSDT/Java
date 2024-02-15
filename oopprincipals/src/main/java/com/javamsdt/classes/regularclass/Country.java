@@ -1,4 +1,4 @@
-package com.javamsdt.classes;
+package com.javamsdt.classes.regularclass;
 
 import java.time.LocalDate;
 import java.util.Objects;
