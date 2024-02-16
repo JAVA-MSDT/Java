@@ -1,4 +1,4 @@
-package com.javamsdt.classes.regularclass;
+package com.javamsdt.abstraction.simple;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -6,17 +6,17 @@ import java.util.Objects;
 public class Country {
 
     // Primitive variables
-    short countryCode;
-    int phoneNumber;
-    long size;
-    float longitude;
-    double latitude;
-    boolean hasPort;
-    char countryFirstLatter;
+    private short countryCode;
+    private int phoneNumber;
+    private long size;
+    private float longitude;
+    private double latitude;
+    private boolean hasPort;
+    private char countryFirstLatter;
 
     // Instance variable
-    String countryName;
-    LocalDate nationalDay;
+    private String countryName;
+    private LocalDate nationalDay;
 
     // Constructors
     public Country() {
@@ -35,9 +35,78 @@ public class Country {
         this.nationalDay = nationalDay;
     }
 
-   public void printLocation() {
-       System.out.println("Geo Location is :: " + this.longitude + ", " + this.latitude);
-   }
+    // Getters and Setters
+    public short getCountryCode() {
+        return countryCode;
+    }
+
+    public void setCountryCode(short countryCode) {
+        this.countryCode = countryCode;
+    }
+
+    public int getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public long getSize() {
+        return size;
+    }
+
+    public void setSize(long size) {
+        this.size = size;
+    }
+
+    public float getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(float longitude) {
+        this.longitude = longitude;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public boolean isHasPort() {
+        return hasPort;
+    }
+
+    public void setHasPort(boolean hasPort) {
+        this.hasPort = hasPort;
+    }
+
+    public char getCountryFirstLatter() {
+        return countryFirstLatter;
+    }
+
+    public void setCountryFirstLatter(char countryFirstLatter) {
+        this.countryFirstLatter = countryFirstLatter;
+    }
+
+    public String getCountryName() {
+        return countryName;
+    }
+
+    public void setCountryName(String countryName) {
+        this.countryName = countryName;
+    }
+
+    public LocalDate getNationalDay() {
+        return nationalDay;
+    }
+
+    public void setNationalDay(LocalDate nationalDay) {
+        this.nationalDay = nationalDay;
+    }
 
     // Equals and HashCode
     @Override
