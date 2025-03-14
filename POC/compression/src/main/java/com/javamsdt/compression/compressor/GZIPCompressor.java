@@ -18,6 +18,7 @@ public class GZIPCompressor implements Compressor {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         try (GZIPOutputStream gzipOS = new GZIPOutputStream(outputStream, Deflater.BEST_COMPRESSION)) {
             gzipOS.write(data);
+            gzipOS.finish();
         } catch (IOException e) {
             logger.log(Level.SEVERE, "Error compressing data in GZIPCompressor.", e);
             throw new RuntimeException(e);

@@ -18,6 +18,7 @@ public class LzmaCompressor implements Compressor {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         try (XZOutputStream xzOS = new XZOutputStream(outputStream, new LZMA2Options())) {
             xzOS.write(data);
+            xzOS.finish();
         } catch (IOException e) {
             logger.log(Level.SEVERE, "Error compressing data in LzmaCompressor.", e);
             throw new RuntimeException(e);

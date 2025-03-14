@@ -34,7 +34,7 @@ public class CompressionService {
             long timeTaken = BenchmarkUtil.getTakenTimeInMillis(startTime, endTime);
             long memoryUsed = BenchmarkUtil.getMemoryUsedInMegabyte(startMemory, endMemory);
             long sizeAfterCompression = BenchmarkUtil.getSizeInMegabyte(compressed.length);
-            CommonUtil.writeFile("compressedFiles/" + algorithm.name(), filename, compressed);
+            CommonUtil.writeFile("src/files/compressed/" + algorithm.name(), filename, compressed);
             System.out.printf("%-9s | %-19s | %-16s | %-15s | %-9s | %-9s%n",
                     algorithm, filename, sizeBeforeCompression, sizeAfterCompression, timeTaken, memoryUsed);
         }

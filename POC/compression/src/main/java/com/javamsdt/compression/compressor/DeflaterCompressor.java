@@ -2,7 +2,10 @@ package com.javamsdt.compression.compressor;
 
 import com.javamsdt.compression.compressor.api.Compressor;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.Arrays;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.zip.Deflater;
 
@@ -12,17 +15,25 @@ public class DeflaterCompressor implements Compressor {
 
     @Override
     public byte[] compress(byte[] data) {
-        Deflater deflater = new Deflater(Deflater.BEST_COMPRESSION); // Highest compression level
+        byte[] compressed;
+        Deflater deflater = new Deflater(Deflater.BEST_COMPRESSION);
         deflater.setInput(data);
         deflater.finish(); // Signal end of data
 
-        byte[] buffer = new byte[1024];
-        int compressedLength = deflater.deflate(buffer);
-        deflater.end();
+        try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
+            byte[] buffer = new byte[1024]; // Reasonable buffer size
+            while (!deflater.finished()) {
+                int compressedLength = deflater.deflate(buffer);
+                outputStream.write(buffer, 0, compressedLength);
+            }
+            deflater.end();
+            compressed = outputStream.toByteArray();
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, "Error compressing data in DeflaterCompressor.", e);
+            throw new RuntimeException("Error during compression", e);
+        }
 
-        byte[] compressed = Arrays.copyOf(buffer, compressedLength); // Trim to actual compressed size
-
-//        logger.log(Level.INFO, "GZIPCompressor compressed the data successfully");
+//        logger.log(Level.INFO, "DeflaterCompressor compressed the data successfully");
         return compressed;
     }
 }
