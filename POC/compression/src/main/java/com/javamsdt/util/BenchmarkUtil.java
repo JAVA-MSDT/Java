@@ -20,6 +20,6 @@ public class BenchmarkUtil {
     }
 
     public static long getSizeInMegabyte(long size) {
-        return size / (1024 * 1024);
+        return size;// / (1024 * 1024);
     }
 }

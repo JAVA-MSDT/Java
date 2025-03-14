@@ -3,7 +3,6 @@ package com.javamsdt.compression.compressor;
 import com.javamsdt.compression.compressor.api.Compressor;
 
 import java.util.Arrays;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.zip.Deflater;
 
@@ -23,7 +22,7 @@ public class DeflaterCompressor implements Compressor {
 
         byte[] compressed = Arrays.copyOf(buffer, compressedLength); // Trim to actual compressed size
 
-        logger.log(Level.INFO, "GZIPCompressor compressed the data successfully");
+//        logger.log(Level.INFO, "GZIPCompressor compressed the data successfully");
         return compressed;
     }
 }

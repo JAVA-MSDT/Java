@@ -23,7 +23,7 @@ public class GZIPCompressor implements Compressor {
             throw new RuntimeException(e);
         }
         byte[] compressed = outputStream.toByteArray();
-        logger.log(Level.INFO, "GZIPCompressor compressed the data successfully");
+//        logger.log(Level.INFO, "GZIPCompressor compressed the data successfully");
         return compressed;
     }
 }

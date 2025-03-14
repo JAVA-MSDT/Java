@@ -3,6 +3,9 @@ package com.javamsdt.compression.service;
 import com.javamsdt.compression.factory.CompressionFactory;
 import com.javamsdt.util.Algorithm;
 import com.javamsdt.util.BenchmarkUtil;
+import com.javamsdt.util.CommonUtil;
+
+import java.io.IOException;
 
 public class CompressionService {
 
@@ -13,8 +16,8 @@ public class CompressionService {
     }
 
 
-    public void compress(Algorithm[] algorithms, byte[] data, String filename) {
-        System.out.println("Algorithm | Filename        | Size Before (MB) | Size After (MB) | Time (ms) | Memory (MB)");
+    public void compressBenchmark(Algorithm[] algorithms, byte[] data, String filename) throws IOException {
+        System.out.println("Algorithm | Filename            | Size Before (MB) | Size After (MB) | Time (ms) | Memory (MB)");
         System.out.println("----------------------------------------------------------------------------------------------------");
 
         long sizeBeforeCompression = BenchmarkUtil.getSizeInMegabyte(data.length);
@@ -31,7 +34,8 @@ public class CompressionService {
             long timeTaken = BenchmarkUtil.getTakenTimeInMillis(startTime, endTime);
             long memoryUsed = BenchmarkUtil.getMemoryUsedInMegabyte(startMemory, endMemory);
             long sizeAfterCompression = BenchmarkUtil.getSizeInMegabyte(compressed.length);
-            System.out.printf("%-9s | %-15s | %-16s | %-15s | %-9s | %-9s%n",
+            CommonUtil.writeFile("compressedFiles/" + algorithm.name(), filename, compressed);
+            System.out.printf("%-9s | %-19s | %-16s | %-15s | %-9s | %-9s%n",
                     algorithm, filename, sizeBeforeCompression, sizeAfterCompression, timeTaken, memoryUsed);
         }
     }
