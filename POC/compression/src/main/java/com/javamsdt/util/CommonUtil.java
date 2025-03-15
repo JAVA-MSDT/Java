@@ -28,7 +28,7 @@ public class CommonUtil {
     }
 
     public static byte[] buildByteArray(ByteArrayOutputStream outputStream, InputStream inputStream) throws IOException {
-        byte[] buffer = new byte[8192];
+        byte[] buffer = new byte[8192]; // 8 KB buffer for efficiency
         int bytesRead;
         while ((bytesRead = inputStream.read(buffer)) != -1) {
             outputStream.write(buffer, 0, bytesRead);
