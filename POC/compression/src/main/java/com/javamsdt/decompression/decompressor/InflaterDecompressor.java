@@ -1,6 +1,6 @@
 package com.javamsdt.decompression.decompressor;
 
-import com.javamsdt.decompression.Decompressor;
+import com.javamsdt.decompression.decompressor.api.Decompressor;
 import com.javamsdt.util.CommonUtil;
 
 import java.io.ByteArrayInputStream;
@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.zip.GZIPInputStream;
 import java.util.zip.InflaterInputStream;
 
 public class InflaterDecompressor implements Decompressor {

@@ -17,6 +17,7 @@ public class CompressionService {
 
 
     public void compressBenchmark(Algorithm[] algorithms, byte[] data, String filename) throws IOException {
+        System.out.println("----------------------------------- Compression Benchmark ------------------------------------------");
         System.out.println("Algorithm | Filename            | Size Before (MB) | Size After (MB) | Time (ms) | Memory (MB)");
         System.out.println("----------------------------------------------------------------------------------------------------");
 

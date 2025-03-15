@@ -1,11 +1,8 @@
 package com.javamsdt.decompression.decompressor;
 
-import com.javamsdt.decompression.Decompressor;
+import com.javamsdt.decompression.decompressor.api.Decompressor;
 import com.javamsdt.util.CommonUtil;
 import net.jpountz.lz4.LZ4BlockInputStream;
-import net.jpountz.lz4.LZ4DecompressorWithLength;
-import net.jpountz.lz4.LZ4FastDecompressor;
-import net.jpountz.lz4.LZ4FrameInputStream;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -13,7 +10,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.zip.InflaterInputStream;
 
 public class LZ4Decompressor implements Decompressor {
 

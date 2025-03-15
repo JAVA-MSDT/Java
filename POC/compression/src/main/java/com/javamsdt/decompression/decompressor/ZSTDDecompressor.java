@@ -1,9 +1,7 @@
 package com.javamsdt.decompression.decompressor;
 
-import com.github.luben.zstd.Zstd;
 import com.github.luben.zstd.ZstdInputStream;
-import com.javamsdt.compression.compressor.api.Compressor;
-import com.javamsdt.decompression.Decompressor;
+import com.javamsdt.decompression.decompressor.api.Decompressor;
 import com.javamsdt.util.CommonUtil;
 
 import java.io.ByteArrayInputStream;

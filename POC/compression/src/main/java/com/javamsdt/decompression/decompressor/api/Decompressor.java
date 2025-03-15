@@ -1,4 +1,4 @@
-package com.javamsdt.decompression;
+package com.javamsdt.decompression.decompressor.api;
 
 public interface Decompressor {
     byte[] decompress(byte[] compressedData);

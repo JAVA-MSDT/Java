@@ -1,8 +1,7 @@
 package com.javamsdt.decompression.decompressor;
 
-import com.javamsdt.decompression.Decompressor;
+import com.javamsdt.decompression.decompressor.api.Decompressor;
 import com.javamsdt.util.CommonUtil;
-import net.jpountz.lz4.LZ4BlockInputStream;
 import org.tukaani.xz.XZInputStream;
 
 import java.io.ByteArrayInputStream;
