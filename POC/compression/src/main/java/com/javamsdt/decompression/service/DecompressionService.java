@@ -19,7 +19,7 @@ public class DecompressionService {
 
     public void decompressBenchmark(Algorithm[] algorithms, String filename) throws IOException, URISyntaxException {
         System.out.println("--------------------------------- Decompression Benchmark ------------------------------------------");
-        System.out.println("Algorithm | Filename            | Size Before (MB) | Size After (MB) | Time (ms) | Memory (MB)");
+        System.out.println("Algorithm | Filename            | Size Before (B) | Size After (B) | Time (ms) | Memory (MB)");
         System.out.println("----------------------------------------------------------------------------------------------------");
 
 
