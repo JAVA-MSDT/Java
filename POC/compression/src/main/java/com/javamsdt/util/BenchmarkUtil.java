@@ -15,11 +15,11 @@ public class BenchmarkUtil {
         return (endTime - startTime) / 1_000_000;
     }
 
-    public static long getMemoryUsedInMegabyte(long startMemory, long endMemory) {
-        return (endMemory - startMemory) / (1024 * 1024);
+    public static long getMemoryUsedInKB(long startMemory, long endMemory) {
+        return (endMemory - startMemory) / 1024;
     }
 
-    public static long getSizeInMegabyte(long size) {
-        return size;// / (1024 * 1024);
+    public static long getSizeInKB(long size) {
+        return size / 1024;
     }
 }
